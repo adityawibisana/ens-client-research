@@ -9,7 +9,7 @@ import { publicProvider } from 'wagmi/providers/public'
 import PlausibleProvider from 'next-plausible'
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.rinkeby],
+  [chain.goerli, chain.mainnet],
   [infuraProvider({}), publicProvider()]
 )
 
