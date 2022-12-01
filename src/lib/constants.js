@@ -14,4 +14,4 @@ export const ensRegistrarConfig = {
 }
 
 export const ensResolver = '0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41'
-export const ensResolverGoerli = '0x840e870459a2c960d70ede14d6daf212c37429c6'
+export const ensResolverGoerli = '0xE264d5bb84bA3b8061ADC38D3D76e6674aB91852'
