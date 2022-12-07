@@ -4,13 +4,20 @@ import { ThemeProvider } from 'styled-components'
 import { ThorinGlobalStyles, lightTheme } from '@ensdomains/thorin'
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi'
-import { infuraProvider } from 'wagmi/providers/infura'
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { publicProvider } from 'wagmi/providers/public'
 import PlausibleProvider from 'next-plausible'
+import { infuraProvider } from 'wagmi/providers/infura'
+
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.rinkeby],
-  [infuraProvider({}), publicProvider()]
+  [chain.goerli], // you can add more chains here like chain.mainnet, chain.optimism etc.
+  [
+    infuraProvider({
+      apiKey: 'ec4d297edcf74c2089fe72fb5142b5a4',
+    }),
+    publicProvider(),
+  ]
 )
 
 const { connectors } = getDefaultWallets({

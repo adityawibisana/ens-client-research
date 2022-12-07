@@ -12,7 +12,7 @@ import {
 import {
   ensRegistrarConfig,
   ensResolver,
-  ensResolverRinkeby,
+  ensResolverGoerli,
 } from '../lib/constants'
 import toast from 'react-hot-toast'
 import {
@@ -78,7 +78,7 @@ export default function Registration({
       name, // name
       owner, // owner
       secret, // secret
-      chain?.id === 1 ? ensResolver : ensResolverRinkeby, // resolver
+      chain?.id === 1 ? ensResolver : ensResolverGoerli, // resolver
       owner, // addr
     ],
   })
@@ -115,6 +115,7 @@ export default function Registration({
   })
 
   // Contract write: register
+  console.log(`Registering ${name} for ${owner}, duration: ${duration}, chainId: ${chain?.id}`)
   const register = useContractWrite({
     ...ensRegistrarConfig,
     functionName: 'registerWithConfig',
@@ -123,7 +124,7 @@ export default function Registration({
       owner, // owner
       duration, // duration
       secret, // secret
-      chain?.id === 1 ? ensResolver : ensResolverRinkeby, // resolver
+      chain?.id === 1 ? ensResolver : ensResolverGoerli, // resolver
       owner, // addr
     ],
     overrides: {
@@ -156,6 +157,9 @@ export default function Registration({
         })
       }
     },
+    onError: (err) => {
+      console.log(`Error waitForRegister: ${err.message}`)
+    }
   })
 
   return (
